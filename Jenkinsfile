@@ -9,9 +9,7 @@ pipeline {
             }
         }
         stage('Build Docker Images'){
-            when {
-                branch 'master'
-            }
+            
             steps{
                 script {
                     app = docker.build("satadal7/node-app")
@@ -22,9 +20,7 @@ pipeline {
             }
         }
         stage('push Docker Image'){
-            when {
-                branch 'master'
-            }
+           
             steps{
                 script{
                     docker.withRegistry('https://registry.hub.docker.com','docker_hub_login'){
